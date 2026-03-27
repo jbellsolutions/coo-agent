@@ -2,6 +2,16 @@
 
 > Your always-on AI COO that sees everything, manages everything, and reports to you on any device. Built on Claude Code + Computer Use + Paperclip + OpenClaw.
 
+## Quick Start
+
+```bash
+git clone https://github.com/jbellsolutions/coo-agent.git
+cd coo-agent
+./setup.sh
+```
+
+The setup script walks you through everything interactively — prerequisites, workspace creation, Paperclip dashboard, Tailscale, ClaudeClaw/Telegram, always-on config, and MCP connections. Takes about 30 minutes.
+
 ---
 
 ## What This Is
