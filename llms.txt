@@ -1,0 +1,40 @@
+# COO Agent — LLM Context File
+# See: https://llmstxt.org/
+
+> Always-on AI Chief Operating Officer for JBell Solutions
+
+## Overview
+
+The COO Agent (codename: AG) is an always-on AI operations executive that monitors all business systems, takes autonomous action, and reports to the CEO. It runs on Claude Code with MCP-first integrations, Computer Use for GUI tools, and SSH for server management.
+
+## Architecture
+
+- Runtime: Claude Code on Mac Mini (always-on, Tailscale-connected)
+- Primary tools: MCP integrations (ClickUp, Gmail, Calendar, GitHub, Slack, Notion, GDrive, GHL, Vercel)
+- Secondary tools: Computer Use for GUI-only systems (Smartlead, Kit, DigitalOcean, LinkedIn)
+- Tertiary tools: Claude Code for file operations, code, git, deployments
+- SDR workforce: Autonomous agents on DigitalOcean via OpenClaw
+
+## Key Files
+
+- CLAUDE.md: 45 operational rules, identity, verification protocols, tool priority
+- AGENTS.md: Agent definitions, coordination protocols, SDR team structure
+- ARCHITECTURE.md: Full system topology and deployment guide
+- ETHOS.md: Operating philosophy and values
+- setup.sh: Interactive deployment script
+- heartbeats/: Scheduled report templates
+- infrastructure/: Deployment guides for all systems
+- skills/: SKILL.md files for each operational capability
+
+## Operational Protocols
+
+- Heartbeats: Morning briefing (7 AM), SDR checks (9 AM, 1 PM), Daily report (5 PM), Weekly review (Friday 6 PM)
+- Verification: Mandatory testing, proof of fix, anti-hallucination protocol
+- Security: No unauthorized live tests, lock assets before publishing, OAuth by default
+- Self-healing: Preflight health checks, auto-fix loops, error classification (FATAL vs RETRYABLE)
+
+## Integrations
+
+Direct (MCP): ClickUp, Gmail, Google Calendar, GitHub, Slack, Notion, Google Drive, GoHighLevel, Vercel, Composio (982+ tools)
+GUI (Computer Use): Smartlead, Kit, DigitalOcean console, LinkedIn
+SSH: DigitalOcean droplets (OpenClaw SDR agents)

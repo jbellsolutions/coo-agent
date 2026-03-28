@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "project": "coo-agent",
+  "description": "Always-on AI Chief Operating Officer for JBell Solutions",
+  "features": {
+    "self_healing": {
+      "enabled": true,
+      "description": "Automatic error detection and recovery using known patterns",
+      "config_path": ".claude/healing/patterns.json",
+      "history_path": ".claude/healing/history.json",
+      "max_retries": 3,
+      "cooldown_seconds": 60
+    },
+    "self_learning": {
+      "enabled": true,
+      "description": "Observation-based learning that improves operations over time",
+      "observations_path": ".claude/learning/observations.json",
+      "insights_path": ".claude/learning/insights.json",
+      "evolution_path": ".claude/learning/evolution.json"
+    },
+    "heartbeat_protocol": {
+      "enabled": true,
+      "description": "Scheduled monitoring and reporting across all systems",
+      "schedules": {
+        "morning_briefing": "07:00 ET",
+        "sdr_check_1": "09:00 ET",
+        "sdr_check_2": "13:00 ET",
+        "daily_report": "17:00 ET",
+        "weekly_review": "Friday 18:00 ET"
+      }
+    },
+    "mcp_integrations": {
+      "enabled": true,
+      "description": "Direct API access to business systems via MCP",
+      "tools": [
+        "clickup",
+        "gmail",
+        "google_calendar",
+        "github",
+        "slack",
+        "notion",
+        "google_drive",
+        "gohighlevel",
+        "vercel",
+        "composio"
+      ]
+    },
+    "computer_use": {
+      "enabled": true,
+      "description": "GUI-based access for tools without APIs",
+      "targets": ["smartlead", "kit", "digitalocean_console", "linkedin"]
+    },
+    "security_review": {
+      "enabled": true,
+      "description": "Automated credential and access monitoring",
+      "agent_config": ".claude/agents/security-reviewer.md"
+    },
+    "code_review": {
+      "enabled": true,
+      "description": "Automated code quality and architecture checks",
+      "agent_config": ".claude/agents/code-reviewer.md"
+    },
+    "session_management": {
+      "enabled": true,
+      "description": "Startup checklists, end-of-session logging, compaction rules",
+      "progress_file": "claude-progress.txt"
+    }
+  }
+}
