@@ -23,6 +23,18 @@ A single AI agent that acts as your Chief Operating Officer. It monitors all you
 2. **Manages everything** — deduplicates work, flags blockers, monitors agent teams, tracks costs
 3. **Takes action** — makes changes to projects, sends messages, books meetings, spins up servers, updates CRM
 
+### Beyond Monitoring — Active Operations
+
+This COO doesn't just watch. It:
+
+4. **Self-heals** — circuit breakers on every integration, automatic error recovery, crash pattern learning
+5. **Self-improves** — Karpathy-pattern optimization loops on outreach, reporting, and agent performance
+6. **Runs GTM** — tracks the full funnel (lead → close), compares channel ROI, forecasts revenue
+7. **Manages agents** — monitors a fleet of sub-agents, restarts failures, tracks health and costs
+8. **Works from your phone** — 20+ quick commands via Telegram/Dispatch ("status", "pipeline", "hot leads")
+9. **Thinks strategically** — monthly reviews with competitive intelligence and 90-day revenue forecasts
+10. **Gets better over time** — pattern libraries, A/B testing mandate, weekly self-scoring
+
 ---
 
 ## Architecture
@@ -142,6 +154,7 @@ Visual overview of all projects, agents, and costs.
 | **3:00 PM** | Systems | Verify all DO droplets healthy, check server costs, flag any issues |
 | **5:00 PM** | Daily Report | Full daily summary — SDR metrics, email campaigns, tasks completed, tasks blocked, costs, what needs you tomorrow → post to Slack + Telegram |
 | **Fri 6 PM** | Weekly Review | SDR self-improvement loop, weekly metrics, cost analysis, recommendations |
+| **1st of Month** | Monthly Strategy | GTM performance, revenue forecast, competitive scan, strategic recommendations |
 
 ### On-Demand (You Ask)
 
@@ -187,17 +200,45 @@ Anything you can say in natural language:
 ```
 coo-agent/
 ├── README.md                          # This file
-├── CLAUDE.md                          # COO personality, rules, governance (52 Rules)
+├── CLAUDE.md                          # COO operational rules (93 rules)
 ├── agents/
-│   └── coo/
-│       └── SOUL.md                    # COO agent identity + capabilities
+│   ├── coo/
+│   │   └── SOUL.md                    # COO agent identity, authority, self-improvement
+│   └── sub-agents/
+│       ├── README.md                  # Sub-agent fleet architecture + health monitoring
+│       └── agent-config-schema.md     # Config schema + versioning + rollback procedures
 ├── heartbeats/
-│   ├── morning-briefing.md            # 7 AM heartbeat instructions
-│   ├── sdr-check.md                   # SDR pipeline monitoring
-│   ├── daily-report.md                # 5 PM daily summary
-│   └── weekly-review.md              # Friday weekly analysis
+│   ├── morning-briefing.md            # 7 AM — daily briefing
+│   ├── sdr-check.md                   # 9 AM, 1 PM — SDR pipeline monitoring
+│   ├── daily-report.md                # 5 PM — end-of-day summary
+│   ├── weekly-review.md               # Friday 6 PM — weekly analysis
+│   └── monthly-strategy.md            # 1st of month — strategic review + forecast
 ├── rules/
 │   └── RULES.md                       # The 52 Rules — operational governance
+├── playbooks/
+│   ├── gtm-playbook.md               # Go-to-market strategy + funnel tracking
+│   ├── yc-cofounder-playbook.md       # YC-aligned operating cadence + Strat-Agent model
+│   ├── mobile-commands.md             # 20+ quick commands for phone access
+│   ├── incident-response.md           # Incident lifecycle + top 10 failure runbooks
+│   ├── event-driven-triggers.md       # Real-time event catalog + webhook security
+│   ├── financial-ops.md               # Budget tracking + variance alerts + forecasting
+│   ├── compliance-monitoring.md       # CAN-SPAM, TCPA, state laws, platform limits
+│   ├── observability.md               # Fleet dashboard + structured logging + quality scoring
+│   ├── client-onboarding.md           # Client intake + vendor evaluation framework
+│   └── knowledge-base.md              # Institutional memory + retrieval protocol
+├── skills/
+│   └── README.md                      # Skill registry (operational, GTM, agent mgmt)
+├── improvements/
+│   ├── coo-self-improvement.md        # COO performance improvement log
+│   ├── patterns-winning.md            # Proven patterns library
+│   └── patterns-losing.md             # Anti-patterns library
+├── templates/
+│   ├── morning-briefing-template.md   # Morning report format
+│   ├── daily-report-template.md       # Daily report format
+│   ├── weekly-review-template.md      # Weekly review format (expanded)
+│   ├── self-healing-pipeline.md       # Pipeline error handling
+│   ├── circuit-breaker.md             # Circuit breaker states + alert rules
+│   └── self-improving-loop.md         # Karpathy pattern for continuous improvement
 ├── infrastructure/
 │   ├── mac-mini-setup.md              # Mac Mini always-on setup guide
 │   ├── paperclip-setup.md             # Paperclip installation + config
@@ -205,10 +246,6 @@ coo-agent/
 │   ├── tailscale-setup.md             # Remote access from phone/other devices
 │   ├── mcp-connections.md             # All MCP server configurations
 │   └── digitalocean-openclaw.md       # OpenClaw one-click deploy to DO
-├── templates/
-│   ├── morning-briefing-template.md   # Morning report format
-│   ├── daily-report-template.md       # Daily report format
-│   └── self-healing-pipeline.md       # Pipeline error handling
 ├── docs/
 │   ├── architecture-decisions.md      # Why this architecture
 │   ├── computer-use-guide.md          # When and how to use Computer Use
