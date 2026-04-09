@@ -46,7 +46,7 @@
 
 ## SDR Agent Team (Autonomous)
 
-- **Runtime**: DigitalOcean droplets via OpenClaw
+- **Runtime**: DigitalOcean droplets via Claude Code + cron
 - **Monitoring**: AG reads JSON outputs from leads/, sequences/, calls/, sms/, crm/
 - **Dashboard**: Smartlead (via Computer Use)
 - **Alerts**: Slack #sdr channel

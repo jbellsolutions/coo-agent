@@ -18,7 +18,7 @@ Give Justin a clear picture of the day ahead before he starts working. Delivered
 8. **DigitalOcean** → Open cloud.digitalocean.com → screenshot droplet status → extract: CPU/memory/disk for all droplets
 
 ### Via SSH
-9. **DO SDR Droplet** → `ssh sdr-team "cat ~/openclaw-workspace/crm/metrics.json"` → extract: yesterday's SDR metrics
+9. **DO SDR Droplet** → `ssh sdr-team "cat ~/sdr-workspace/crm/metrics.json"` → extract: yesterday's SDR metrics
 
 ## Output Format
 

@@ -39,11 +39,11 @@ When asking Justin for decisions:
 
 SSH into DO droplets and verify each SDR agent ran on schedule.
 
-1. SSH to SDR droplet: `ssh sdr-team "ls -la ~/openclaw-workspace/leads/today.json"` -- check Prospector ran (expected: 6 AM)
-2. Check Email SDR: `ssh sdr-team "ls -la ~/openclaw-workspace/sequences/$(date +%Y-%m-%d)/"` -- expected runs at 8 AM and 10 AM
-3. Check Phone SDR: `ssh sdr-team "ls -la ~/openclaw-workspace/calls/$(date +%Y-%m-%d)/"` -- expected run at 10 AM
-4. Check Text SDR: `ssh sdr-team "ls -la ~/openclaw-workspace/sms/$(date +%Y-%m-%d)/"` -- expected run at 12 PM
-5. Check Sequence Manager: `ssh sdr-team "ls -la ~/openclaw-workspace/pipeline/status.json"` -- check timestamp is recent
+1. SSH to SDR droplet: `ssh sdr-team "ls -la ~/sdr-workspace/leads/today.json"` -- check Prospector ran (expected: 6 AM)
+2. Check Email SDR: `ssh sdr-team "ls -la ~/sdr-workspace/sequences/$(date +%Y-%m-%d)/"` -- expected runs at 8 AM and 10 AM
+3. Check Phone SDR: `ssh sdr-team "ls -la ~/sdr-workspace/calls/$(date +%Y-%m-%d)/"` -- expected run at 10 AM
+4. Check Text SDR: `ssh sdr-team "ls -la ~/sdr-workspace/sms/$(date +%Y-%m-%d)/"` -- expected run at 12 PM
+5. Check Sequence Manager: `ssh sdr-team "ls -la ~/sdr-workspace/pipeline/status.json"` -- check timestamp is recent
 6. Compare file timestamps against expected run times. Flag any agent that missed its window by more than 30 minutes
 7. If SSH fails entirely, flag as CRITICAL -- the droplet may be down
 
@@ -72,10 +72,10 @@ Check CRM pipeline for lead movement using MCP.
 
 Identify leads requiring immediate attention.
 
-1. SSH: `ssh sdr-team "cat ~/openclaw-workspace/crm/prospects.json"` -- look for status "hot" or "handed_off"
+1. SSH: `ssh sdr-team "cat ~/sdr-workspace/crm/prospects.json"` -- look for status "hot" or "handed_off"
 2. Check Smartlead for positive email replies (reply sentiment: positive, interested, requesting meeting)
 3. Check GHL for new qualified conversations
-4. Check SMS logs for positive text responses: `ssh sdr-team "cat ~/openclaw-workspace/sms/$(date +%Y-%m-%d)/*.json"` -- look for response indicators
+4. Check SMS logs for positive text responses: `ssh sdr-team "cat ~/sdr-workspace/sms/$(date +%Y-%m-%d)/*.json"` -- look for response indicators
 5. For each hot lead, compile: name, company, ICP score, engagement type, recommended next step
 
 ## Phase 5 — Anomaly Detection
@@ -84,7 +84,7 @@ Flag anything that deviates significantly from normal patterns.
 
 1. Compare today's lead count against 7-day average. Flag if deviation > 40%
 2. Check if any agent produced zero output (possible crash)
-3. Check for error logs: `ssh sdr-team "tail -50 ~/openclaw-workspace/logs/error.log"`
+3. Check for error logs: `ssh sdr-team "tail -50 ~/sdr-workspace/logs/error.log"`
 4. Check for bounce spikes that could indicate domain reputation damage
 5. Check for rate-limit warnings in agent logs
 6. Cross-reference: if emails sent is high but opens are near zero, deliverability is broken

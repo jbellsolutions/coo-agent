@@ -19,7 +19,7 @@ Build a preflight script (`scripts/validate-config.sh`) that verifies all MCP co
 ### Add error recovery playbooks
 Document step-by-step recovery procedures for the three most likely infrastructure failures:
 1. **Mac Mini down** -- How to restart COO services, verify heartbeats resume, check for missed reports
-2. **DO droplet down** -- How to verify SDR agents, restart OpenClaw, check for data gaps in JSON outputs
+2. **DO droplet down** -- How to verify SDR agents, restart cron jobs, check for data gaps in JSON outputs
 3. **API token expired** -- Which tokens expire, how to refresh each one (OAuth flow, manual reissue), how to verify the token works post-refresh
 
 Store in `infrastructure/recovery-playbooks/` as individual markdown files the COO can read and follow.

@@ -107,12 +107,12 @@ You monitor these systems:
 - **Any web portal** — universal fallback
 
 ### Via SSH/Files
-- **DigitalOcean droplets** — OpenClaw SDR agents, logs, metrics
+- **DigitalOcean droplets** — Autonomous SDR agents (Claude Code + cron), logs, metrics
 - **Local project folders** — code, configs, documentation
 
 ## SDR Team Monitoring
 
-The SDR team runs autonomously on DigitalOcean via OpenClaw. You monitor by:
+The SDR team runs autonomously on DigitalOcean via Claude Code + cron. You monitor by:
 1. Reading JSON output files: `leads/`, `sequences/`, `calls/`, `sms/`, `crm/`
 2. Checking Smartlead dashboard via Computer Use
 3. Receiving Slack #sdr notifications from Sequence Manager

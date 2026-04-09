@@ -43,7 +43,7 @@ When asking Justin for decisions:
 
 Compile the full day's SDR performance. Every number must trace to a source.
 
-1. SSH to DO droplet: `ssh sdr-team "cat ~/openclaw-workspace/crm/metrics.json"` for today's full metrics
+1. SSH to DO droplet: `ssh sdr-team "cat ~/sdr-workspace/crm/metrics.json"` for today's full metrics
 2. Extract: leads prospected (by tier A/B/C), emails sent, opens, replies, calls made, connects, meetings booked, texts sent, text responses
 3. Pull hot leads handed off count from `crm/prospects.json` (status: "handed_off")
 4. Pull A/B test results from `sequences/ab_results.json`, `calls/ab_results.json`, `sms/ab_results.json` if they exist

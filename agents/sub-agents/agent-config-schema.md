@@ -6,7 +6,7 @@ Every sub-agent must have a config file following this schema. This enables vers
 
 ## Config File Location
 ```
-~/openclaw-workspace/agents/[agent-name]/config.yaml
+~/sdr-workspace/agents/[agent-name]/config.yaml
 ```
 
 ## Schema
@@ -47,7 +47,7 @@ tools:
       notes: "Only if API fails"
 
 health:
-  health_file: "~/openclaw-workspace/agents/email-sdr/health.json"
+  health_file: "~/sdr-workspace/agents/email-sdr/health.json"
   max_consecutive_failures: 2
   circuit_breaker:
     failure_threshold: 3
@@ -56,14 +56,14 @@ health:
 
 outputs:
   success:
-    - path: "~/openclaw-workspace/sequences/today.json"
+    - path: "~/sdr-workspace/sequences/today.json"
       format: "json"
     - channel: "#sdr"
       type: "slack"
   failure:
     - channel: "#alerts"
       type: "slack"
-    - path: "~/openclaw-workspace/agents/email-sdr/errors.log"
+    - path: "~/sdr-workspace/agents/email-sdr/errors.log"
 
 metrics:
   tracked:
@@ -106,7 +106,7 @@ git push --tags
 
 ```bash
 # 1. Check current version
-cat ~/openclaw-workspace/agents/email-sdr/config.yaml | grep version
+cat ~/sdr-workspace/agents/email-sdr/config.yaml | grep version
 
 # 2. List available versions
 git tag | grep email-sdr
@@ -116,11 +116,11 @@ git checkout email-sdr-v1.1.0 -- agents/email-sdr/
 systemctl restart email-sdr  # or cron restart
 
 # 4. Verify rollback
-cat ~/openclaw-workspace/agents/email-sdr/health.json
+cat ~/sdr-workspace/agents/email-sdr/health.json
 # Confirm: version shows 1.1.0, status shows healthy
 
 # 5. Log the rollback
-echo "[$(date)] ROLLBACK: email-sdr v1.2.0 → v1.1.0. Reason: [describe]" >> ~/openclaw-workspace/agents/rollback.log
+echo "[$(date)] ROLLBACK: email-sdr v1.2.0 → v1.1.0. Reason: [describe]" >> ~/sdr-workspace/agents/rollback.log
 ```
 
 ## Deployment Checklist

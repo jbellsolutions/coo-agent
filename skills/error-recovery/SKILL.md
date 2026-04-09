@@ -45,7 +45,7 @@ Reference `templates/self-healing-pipeline.md` for the error classification fram
 |-------|----------|-------------------|
 | **Infrastructure** | DO droplet down, network unreachable, disk full | SSH diagnostics, reboot if needed |
 | **API / Auth** | 401 Unauthorized, token expired, rate limited | Token refresh, backoff retry |
-| **Agent** | OpenClaw agent crashed, cron missed, zero output | Log inspection, process restart |
+| **Agent** | SDR agent crashed, cron missed, zero output | Log inspection, process restart |
 | **Network** | Timeout, DNS failure, Tailscale disconnected | Connectivity diagnostics, retry |
 | **Auth** | OAuth expired, MCP server auth failure | Guide token refresh, test connection |
 
@@ -64,7 +64,7 @@ Known patterns to check:
 2. **DO droplet unresponsive**: Check if SSH works. If SSH fails, check if the IP pings. If ping fails, check DigitalOcean console. The droplet may need a power cycle.
 3. **MCP tool returning errors**: Test with the simplest possible read-only call. If that fails, the MCP server process may have crashed. Check if `npx @anthropic/mcp-[tool]` is responsive.
 4. **Mac Mini went to sleep**: Check `pmset -g` output. If sleep crept back, re-run: `sudo pmset -a sleep 0 && sudo pmset -a disablesleep 1 && sudo pmset -a displaysleep 0`
-5. **Agent produced zero output**: SSH to droplet, check `~/openclaw-workspace/logs/` for error traces. Check if the cron job ran: `grep [agent-name] /var/log/syslog` or `crontab -l`.
+5. **Agent produced zero output**: SSH to droplet, check `~/sdr-workspace/logs/` for error traces. Check if the cron job ran: `grep [agent-name] /var/log/syslog` or `crontab -l`.
 6. **Smartlead/Kit unreachable via Computer Use**: Browser session may have expired. Clear cookies, re-authenticate.
 7. **Slack posting failed**: Check bot token permissions. Verify the channel exists and the bot is a member.
 8. **ClaudeClaw bridge down**: Check if the process is running. Check Telegram bot token validity.
@@ -88,11 +88,11 @@ Based on classification, execute the appropriate recovery steps.
 5. After refresh, run the config-validate skill to confirm all connections
 
 ### Agent Recovery
-1. SSH to droplet: `ssh sdr-team "cat ~/openclaw-workspace/logs/error.log | tail -100"`
-2. Check if the process is running: `ssh sdr-team "ps aux | grep openclaw"`
+1. SSH to droplet: `ssh sdr-team "cat ~/sdr-workspace/logs/error.log | tail -100"`
+2. Check if the process is running: `ssh sdr-team "ps aux | grep claude"`
 3. Check cron schedule: `ssh sdr-team "crontab -l"`
 4. If the agent crashed, check logs for the root cause BEFORE restarting (Rule #44 -- systematic debugging)
-5. Restart only after identifying root cause: `ssh sdr-team "cd ~/openclaw-workspace && ./restart-agent.sh [agent-name]"`
+5. Restart only after identifying root cause: `ssh sdr-team "cd ~/sdr-workspace && ./restart-agent.sh [agent-name]"`
 
 ### Network Recovery
 1. Check Tailscale status: `tailscale status`

@@ -27,7 +27,7 @@ Initial release of the AI Chief Operating Officer system.
 - ClaudeClaw Telegram bridge setup
 - Tailscale mesh network for remote access
 - MCP server connection configurations for all supported tools
-- DigitalOcean OpenClaw one-click deploy for SDR worker agents
+- DigitalOcean Claude Code + cron setup guide for SDR worker agents
 
 **Templates**
 - Morning briefing report template

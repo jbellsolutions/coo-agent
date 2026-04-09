@@ -6,11 +6,11 @@ Monitor the SDR team running on DigitalOcean. Flag hot leads immediately. Verify
 ## Data Sources
 
 ### Via SSH (DO Droplet)
-1. `cat ~/openclaw-workspace/leads/today.json` → new leads prospected
-2. `cat ~/openclaw-workspace/pipeline/status.json` → pipeline state
-3. `cat ~/openclaw-workspace/crm/prospects.json` → prospect statuses
-4. `ls -la ~/openclaw-workspace/calls/$(date +%Y-%m-%d)/` → calls made today
-5. `ls -la ~/openclaw-workspace/sms/$(date +%Y-%m-%d)/` → texts sent today
+1. `cat ~/sdr-workspace/leads/today.json` → new leads prospected
+2. `cat ~/sdr-workspace/pipeline/status.json` → pipeline state
+3. `cat ~/sdr-workspace/crm/prospects.json` → prospect statuses
+4. `ls -la ~/sdr-workspace/calls/$(date +%Y-%m-%d)/` → calls made today
+5. `ls -la ~/sdr-workspace/sms/$(date +%Y-%m-%d)/` → texts sent today
 
 ### Via MCP
 6. **GoHighLevel** → check pipeline stages, new contacts, conversations

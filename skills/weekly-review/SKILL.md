@@ -44,9 +44,9 @@ When asking Justin for decisions:
 Compile this week's numbers and compare against last week.
 
 1. Pull daily report logs from `~/coo-workspace/logs/daily-report-*.log` for Mon-Fri this week
-2. SSH to DO: `ssh sdr-team "cat ~/openclaw-workspace/crm/metrics.json"` for weekly SDR rollup
-3. Pull A/B test results: `ssh sdr-team "cat ~/openclaw-workspace/sequences/ab_results.json"` and similar for calls/sms
-4. Pull improvement log: `ssh sdr-team "cat ~/openclaw-workspace/improvements/week-$(date +%V).md"` if it exists
+2. SSH to DO: `ssh sdr-team "cat ~/sdr-workspace/crm/metrics.json"` for weekly SDR rollup
+3. Pull A/B test results: `ssh sdr-team "cat ~/sdr-workspace/sequences/ab_results.json"` and similar for calls/sms
+4. Pull improvement log: `ssh sdr-team "cat ~/sdr-workspace/improvements/week-$(date +%V).md"` if it exists
 5. ClickUp: `clickup_filter_tasks` with `date_done_from` and `date_done_to` spanning Mon-Fri, `include_closed: true` for completed tasks
 6. ClickUp: count tasks created this week vs completed (velocity indicator)
 7. GitHub: `gh pr list --state merged --json mergedAt` filtered to this week

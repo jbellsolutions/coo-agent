@@ -13,7 +13,7 @@ The COO Agent (codename: AG) is an always-on AI operations executive that monito
 - Primary tools: MCP integrations (ClickUp, Gmail, Calendar, GitHub, Slack, Notion, GDrive, GHL, Vercel)
 - Secondary tools: Computer Use for GUI-only systems (Smartlead, Kit, DigitalOcean, LinkedIn)
 - Tertiary tools: Claude Code for file operations, code, git, deployments
-- SDR workforce: Autonomous agents on DigitalOcean via OpenClaw
+- SDR workforce: Autonomous agents on DigitalOcean via Claude Code + cron
 
 ## Key Files
 
@@ -37,4 +37,4 @@ The COO Agent (codename: AG) is an always-on AI operations executive that monito
 
 Direct (MCP): ClickUp, Gmail, Google Calendar, GitHub, Slack, Notion, Google Drive, GoHighLevel, Vercel, Composio (982+ tools)
 GUI (Computer Use): Smartlead, Kit, DigitalOcean console, LinkedIn
-SSH: DigitalOcean droplets (OpenClaw SDR agents)
+SSH: DigitalOcean droplets (Autonomous SDR agents)

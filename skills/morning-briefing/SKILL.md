@@ -90,7 +90,7 @@ Pull unread mentions and alerts using MCP tools.
 Pull SDR pipeline data. MCP first, SSH second, Computer Use last.
 
 1. Try GoHighLevel MCP: pull pipeline stages, new contacts, conversations
-2. SSH to DO SDR droplet: `ssh sdr-team "cat ~/openclaw-workspace/crm/metrics.json"` for yesterday's metrics
+2. SSH to DO SDR droplet: `ssh sdr-team "cat ~/sdr-workspace/crm/metrics.json"` for yesterday's metrics
 3. Extract: prospected, emailed, called, texted, opens, replies, meetings booked, hot leads
 4. ONLY IF MCP and SSH both fail: use Computer Use to screenshot app.smartlead.ai dashboard
 5. If all methods fail, note "SDR: UNREACHABLE" in the briefing

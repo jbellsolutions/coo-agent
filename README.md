@@ -1,6 +1,6 @@
 # AI Chief Operating Officer
 
-> Your always-on AI COO that sees everything, manages everything, and reports to you on any device. Built on Claude Code + Computer Use + Paperclip + OpenClaw.
+> Your always-on AI COO that sees everything, manages everything, and reports to you on any device. Built on Claude Code + Computer Use + Paperclip.
 
 ## Quick Start
 
@@ -74,7 +74,7 @@ This COO doesn't just watch. It:
 ┌─────────────────────────────────────────────────────────────┐
 │  DIGITALOCEAN (worker agents) — The Workforce               │
 │                                                              │
-│  Droplet 1: OpenClaw SDR Team (5 agents)                    │
+│  Droplet 1: Autonomous SDR Team (5 agents)                    │
 │  ├── Prospector → Airtop AI, Apollo                         │
 │  ├── Email SDR → Smartlead MCP                              │
 │  ├── Phone SDR → Retell AI / CallHub                        │
@@ -90,11 +90,11 @@ This COO doesn't just watch. It:
 
 | | Mac Mini | DigitalOcean |
 |---|---|---|
-| **What** | COO brain + Computer Use | OpenClaw worker agents |
+| **What** | COO brain + Computer Use | Autonomous SDR worker agents |
 | **Why** | Computer Use requires macOS + screen | Cheap, scalable, headless |
 | **Cost** | $0 (you own it) | ~$37/mo per droplet |
 | **Access** | GUI + terminal + dashboard | Cron-driven, autonomous |
-| **Deploy** | This repo | OpenClaw one-click deploy |
+| **Deploy** | This repo | Plain Claude Code + cron |
 
 ---
 
@@ -245,7 +245,7 @@ coo-agent/
 │   ├── claudeclaw-setup.md            # Telegram bridge setup
 │   ├── tailscale-setup.md             # Remote access from phone/other devices
 │   ├── mcp-connections.md             # All MCP server configurations
-│   └── digitalocean-openclaw.md       # OpenClaw one-click deploy to DO
+│   └── digitalocean-sdr-setup.md      # Claude Code + cron SDR setup on DO
 ├── docs/
 │   ├── architecture-decisions.md      # Why this architecture
 │   ├── computer-use-guide.md          # When and how to use Computer Use
@@ -261,7 +261,7 @@ coo-agent/
 
 - Mac Mini (or any Mac) that can stay always-on
 - Claude Pro ($20/mo) or Max ($100-200/mo) subscription
-- DigitalOcean account (for OpenClaw worker agents)
+- DigitalOcean account (for autonomous SDR worker agents)
 - API keys for your tools (ClickUp, Gmail, etc.)
 
 ### Step 1: Mac Mini Setup (20 min)
@@ -363,27 +363,29 @@ npm install && npm start
 # 4. Message your Telegram bot — it's connected to the COO
 ```
 
-### Step 6: OpenClaw Workers on DigitalOcean (10 min)
+### Step 6: SDR Workers on DigitalOcean (10 min)
 
 ```bash
-# Option A: One-click deploy (recommended)
-# Go to marketplace.digitalocean.com → search "OpenClaw"
-# Click "Create Droplet" → select 8GB RAM → deploy
-
-# Option B: Manual
+# Option A: Manual deploy
 doctl compute droplet create sdr-team \
   --image ubuntu-24-04-x64 \
   --size s-4vcpu-8gb \
   --region nyc1
 
-# SSH in and install OpenClaw
+# SSH in and install Claude Code
 ssh root@your-droplet-ip
-curl -fsSL https://openclaw.com/install.sh | bash
+# Install Node.js
+curl -fsSL https://fnm.vercel.app/install | bash
+export PATH="$HOME/.local/share/fnm:$PATH"
+eval "$(fnm env)"
+fnm install 20 && fnm use 20
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
 
 # Deploy SDR agents
-git clone https://github.com/jbellsolutions/openclaw-sdr-agent.git
-cp -r openclaw-sdr-agent/v2-full/agents/ ~/openclaw-workspace/agents/
-crontab openclaw-sdr-agent/v2-full/cron/crontab.txt
+git clone https://github.com/jbellsolutions/autonomous-sdr-agent.git
+cp -r autonomous-sdr-agent/v2-full/agents/ ~/sdr-workspace/agents/
+crontab autonomous-sdr-agent/v2-full/cron/crontab.txt
 ```
 
 ### Step 7: Test End-to-End (10 min)
@@ -426,21 +428,21 @@ claude "Use Computer Use to open Safari, go to app.smartlead.ai, and screenshot 
 
 ---
 
-## OpenClaw's Role
+## Autonomous SDR Team's Role
 
-OpenClaw is NOT replaced — it runs the worker agents:
+The autonomous SDR team runs worker agents on DigitalOcean via plain Claude Code + cron:
 
 | Component | Tool | Where |
 |-----------|------|-------|
 | **COO (brain)** | Claude Code + Computer Use + Paperclip | Mac Mini |
-| **SDR Prospector** | OpenClaw agent | DigitalOcean |
-| **SDR Email** | OpenClaw agent | DigitalOcean |
-| **SDR Phone** | OpenClaw agent | DigitalOcean |
-| **SDR Text** | OpenClaw agent | DigitalOcean |
-| **SDR Sequence Manager** | OpenClaw agent | DigitalOcean |
-| **Future agents** | OpenClaw agents | DigitalOcean |
+| **SDR Prospector** | Claude Code (headless) | DigitalOcean |
+| **SDR Email** | Claude Code (headless) | DigitalOcean |
+| **SDR Phone** | Claude Code (headless) | DigitalOcean |
+| **SDR Text** | Claude Code (headless) | DigitalOcean |
+| **SDR Sequence Manager** | Claude Code (headless) | DigitalOcean |
+| **Future agents** | Claude Code (headless) | DigitalOcean |
 
-The COO monitors the OpenClaw agents by:
+The COO monitors the SDR agents by:
 1. Reading their JSON output files (via SSH/rsync from DO droplet)
 2. Checking tool dashboards via Computer Use (Smartlead, GHL)
 3. Receiving Slack notifications from the Sequence Manager
@@ -473,7 +475,7 @@ The COO monitors the OpenClaw agents by:
 | [Dispatch](https://claude.ai) | Phone access (iOS) | Access |
 | [Paperclip](https://github.com/paperclipai/paperclip) | Orchestration dashboard | Dashboard |
 | [ClaudeClaw](https://github.com/earlyaidopters/claudeclaw) | Telegram chat bridge | Access |
-| [OpenClaw](https://github.com/open-claw/open-claw) | Worker agent framework (SDR team) | Workers |
+| [Claude Code](https://claude.ai/code) (headless) | Worker agent runtime (SDR team) | Workers |
 | [Tailscale](https://tailscale.com) | Remote access mesh | Network |
 | [Composio](https://composio.dev) | 982+ tool integrations via MCP | Integration |
 | [ClickUp](https://clickup.com) | Task/project management | MCP |

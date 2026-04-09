@@ -60,7 +60,7 @@ The COO (named AG) runs on Claude Code with three tool layers, four scheduled he
  +================================================================+
  |  DIGITALOCEAN (worker agents) -- The Workforce                 |
  |                                                                |
- |  Droplet 1: OpenClaw SDR Team (5 agents)                      |
+ |  Droplet 1: Autonomous SDR Team (5 agents)                     |
  |  +-- Prospector -------> Airtop AI, Apollo                    |
  |  +-- Email SDR --------> Smartlead MCP                        |
  |  +-- Phone SDR --------> Retell AI / CallHub                  |
@@ -88,11 +88,11 @@ The split exists for one practical reason: Computer Use requires macOS with a di
 | **Why here** | Computer Use needs macOS + screen | Cheap, scalable, always-on cloud |
 | **Cost** | $0 (owned hardware) + ~$5/mo electricity | ~$37/mo per droplet |
 | **Access** | GUI + terminal + Paperclip dashboard | SSH, cron, autonomous |
-| **Deploy** | This repo (coo-agent) | OpenClaw one-click deploy |
+| **Deploy** | This repo (coo-agent) | Plain Claude Code + cron  |
 
 **Why not all on DigitalOcean?** Computer Use is macOS-only. There is no workaround.
 
-**Why not all on Mac Mini?** OpenClaw agents are cheaper on DO and benefit from cloud uptime guarantees. The Mac Mini is the brain, not the muscle.
+**Why not all on Mac Mini?** Autonomous SDR agents are cheaper on DO and benefit from cloud uptime guarantees. The Mac Mini is the brain, not the muscle.
 
 ---
 
@@ -182,7 +182,7 @@ The rules cover 10 domains:
 
 ## Worker Agent Architecture
 
-The OpenClaw SDR team runs on DigitalOcean as five autonomous agents, each with their own SOUL.md and cron schedule:
+The Autonomous SDR team runs on DigitalOcean as five Claude Code (headless) agents, each with their own SOUL.md and cron schedule:
 
 ```
 SDR Team (DO Droplet 1)

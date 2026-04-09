@@ -4,14 +4,14 @@
 
 ### Decision 1: Mac Mini + DigitalOcean (not one or the other)
 
-**Problem:** Computer Use requires macOS + a screen. OpenClaw SDR agents are headless and don't need GUI.
+**Problem:** Computer Use requires macOS + a screen. Autonomous SDR agents are headless and don't need GUI.
 
 **Decision:** Split the workload:
 - Mac Mini = COO brain (Computer Use, Paperclip dashboard, ClaudeClaw)
-- DigitalOcean = Worker agents (OpenClaw SDR team, headless cron jobs)
+- DigitalOcean = Worker agents (Autonomous SDR team, headless cron jobs)
 
 **Why not all on DO?** Computer Use is macOS-only. No way around it.
-**Why not all on Mac Mini?** OpenClaw agents are cheaper to run on DO ($37/mo) and benefit from always-on cloud uptime. Mac Mini is for the brain, not the muscle.
+**Why not all on Mac Mini?** Autonomous SDR agents are cheaper to run on DO ($37/mo) and benefit from always-on cloud uptime. Mac Mini is for the brain, not the muscle.
 
 ### Decision 2: MCP First, Computer Use Second
 
@@ -43,13 +43,13 @@
 
 **Why all three?** Different contexts need different interfaces. Driving? Dispatch. At gym? Telegram. At desk? Dashboard.
 
-### Decision 5: OpenClaw for Workers, Claude Code for COO
+### Decision 5: Claude Code for Workers (headless), Claude Code for COO (Computer Use)
 
-**Problem:** COO needs Computer Use (Claude Code only). SDR agents need always-on cron scheduling (OpenClaw excels at this).
+**Problem:** COO needs Computer Use and full system access. SDR agents need always-on cron scheduling and run headless.
 
 **Decision:** Right tool for the job:
-- OpenClaw = worker agents that run on schedules, handle outreach, follow SOUL.md instructions
-- Claude Code = COO agent that needs Computer Use, MCP tools, and full system access
+- Claude Code (headless + cron) = worker agents that run on schedules, handle outreach, follow SOUL.md instructions
+- Claude Code (Computer Use) = COO agent that needs GUI automation, MCP tools, and full system access
 
 ### Decision 6: The 52 Rules as Governance
 

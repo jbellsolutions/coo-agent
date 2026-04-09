@@ -26,7 +26,7 @@ This is the **COO Agent** — an always-on AI Chief Operating Officer for JBell 
 - **Runtime**: Claude Code on a Mac Mini (always-on via Tailscale)
 - **Tool layers**: MCP tools (primary), Computer Use (GUI), Claude Code (files)
 - **Integrations**: ClickUp, Gmail, Calendar, GitHub, Slack, Notion, Google Drive, GHL, Vercel, Smartlead, Kit, DigitalOcean
-- **SDR team**: Autonomous agents on DigitalOcean droplets via OpenClaw
+- **SDR team**: Autonomous agents on DigitalOcean droplets via Claude Code + cron
 
 ## Conventions
 

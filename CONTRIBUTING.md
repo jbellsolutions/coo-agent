@@ -127,7 +127,7 @@ Clear, imperative statement of what to do or not do. One to three sentences. No 
 
 ## Add a New Worker Agent
 
-Worker agents run on DigitalOcean via OpenClaw. They are headless, cron-driven, and autonomous.
+Worker agents run on DigitalOcean via Claude Code + cron. They are headless, cron-driven, and autonomous.
 
 **1. Define the agent's identity.** Create a SOUL.md for the agent:
 
@@ -156,7 +156,7 @@ What files it produces and where they go.
 When it alerts the COO vs handles silently.
 ```
 
-**2. Build the agent.** Follow OpenClaw's agent structure. Place agent files in the OpenClaw workspace on the DO droplet.
+**2. Build the agent.** Place agent files in the SDR workspace on the DO droplet.
 
 **3. Set up the cron schedule.** Add to the crontab on the DO droplet:
 
@@ -169,7 +169,7 @@ crontab -e
 **4. Define output files.** The COO monitors worker agents by reading their JSON output files. Define a consistent output location and schema:
 
 ```
-~/openclaw-workspace/output/agent-name/
+~/sdr-workspace/output/agent-name/
   |- status.json      # Agent health and last run time
   |- results.json     # Agent output data
   |- errors.json      # Any errors from last run
